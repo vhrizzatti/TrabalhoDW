@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .custom-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            display: none;
+        }
+        .custom-radio {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-radio input[type="radio"] + .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #f4f4f4;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .custom-radio input[type="radio"]:checked + .checkmark {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+        .custom-radio .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-radio input[type="radio"]:checked + .checkmark:after {
+            display: block;
+        }
+        .custom-radio .checkmark:after {
+            top: 7px;
+            left: 7px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+        }
+        .custom-checkbox {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-checkbox input[type="checkbox"] + .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #f4f4f4;
+            border: 2px solid #ccc;
+            transition: background-color 0.3s ease;
+        }
+        .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+            background-color: #28A745;
+            border-color: #28A745;
+        }
+        .custom-checkbox .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 8px;
+            top: 4px;
+            width: 8px;
+            height: 16px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-controls">
+        <label class="custom-radio">Opção 1
+            <input type="radio" name="radio" checked>
+            <span class="checkmark"></span>
+        </label>
+        <label class="custom-radio">Opção 2
+            <input type="radio" name="radio">
+            <span class="checkmark"></span>
+        </label>
+        <label class="custom-radio">Opção 3
+            <input type="radio" name="radio">
+            <span class="checkmark"></span>
+        </label>
+        <label class="custom-checkbox">Opção A
+            <input type="checkbox" checked>
+            <span class="checkmark"></span>
+        </label>
+        <label class="custom-checkbox">Opção B
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="custom-checkbox">Opção C
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+    </div>
+</body>
+</html>
