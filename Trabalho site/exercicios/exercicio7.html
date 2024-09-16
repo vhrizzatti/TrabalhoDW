@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #todo-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #todo-list li {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        #todo-list li.dragging {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <ul id="todo-list">
+        <li draggable="true">Tarefa 1</li>
+        <li draggable="true">Tarefa 2</li>
+        <li draggable="true">Tarefa 3</li>
+    </ul>
+    <script>
+        const listItems = document.querySelectorAll('#todo-list li');
+        let draggedItem = null;
+
+        listItems.forEach(item => {
+            item.addEventListener('dragstart', () => {
+                draggedItem = item;
+                setTimeout(() => item.classList.add('dragging'), 0);
+            });
+
+            item.addEventListener('dragend', () => {
+                setTimeout(() => {
+                    draggedItem = null;
+                    item.classList.remove('dragging');
+                }, 0);
+            });
+
+            item.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                if (e.target.classList.contains('dragging')) return;
+                e.target.style.backgroundColor = '#e9ecef';
+            });
+
+            item.addEventListener('dragleave', (e) => {
+                e.target.style.backgroundColor = '';
+            });
+
+            item.addEventListener('drop', (e) => {
+                e.preventDefault();
+                if (e.target.classList.contains('dragging')) return;
+                e.target.style.backgroundColor = '';
+                draggedItem.parentNode.removeChild(draggedItem);
+                e.target.parentNode.insertBefore(draggedItem, e.target.nextSibling);
+            });
+        });
+    </script>
+</body>
+</html>
